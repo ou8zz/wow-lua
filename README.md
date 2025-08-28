@@ -1,0 +1,1 @@
+### 直接放在/root/wotlk/env/dist/bin/lua_scripts/extensions/目录即可
