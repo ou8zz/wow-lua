@@ -2,7 +2,7 @@
 print(">>Script: NPC2.")
 --54844
 --菜单所有者 --默认炉石
-local itemEntry    =6948
+local itemEntry = 6948
 local NPCID   = 190098
 --阵营
 local TEAM_ALLIANCE=0

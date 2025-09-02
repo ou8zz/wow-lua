@@ -3,5 +3,6 @@
 * PlayerLogin 玩家登录公告
 * TeleportStore 多功能炉石 需要修改炉石的item技能id
 * VendorNPC 综合物品商人
+* GlyphNPC 雕文商人
 * WorldChat 世界聊天（普通聊天频道）
 * NPC2 传送等功能（待完善）
