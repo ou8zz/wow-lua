@@ -432,7 +432,7 @@ function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加
     end
 end
 
-WorldDBExecute(inSQL)  --添加商人
+-- WorldDBExecute(inSQL)  --添加商人
 RegisterCreatureGossipEvent(NPCID, 1, GOODS.Book)
 RegisterCreatureGossipEvent(NPCID, 2, GOODS.Select)
 -- WorldDBExecute(unSQL)  -- 删除商人
