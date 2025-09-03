@@ -406,7 +406,7 @@ local GOODS={--货物id号
 function GOODS.AddMenu(player, unit, id)
     player:GossipClearMenu()--清除菜单
     local menus=GOODS[id]
-    for k ,v in pairs(menus)do
+    for k ,v in ipairs(menus)do
         player:GossipMenuAddItem(v[3] or GOSSIP_ICON_VENDOR, v[1] or "???", 0, (v[2] or k))
     end
     player:GossipSendMenu(1, unit)--发送菜单
