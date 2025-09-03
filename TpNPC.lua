@@ -20,6 +20,19 @@ local MENU=2
 local TP=3
 local ENC=4
 
+--GOSSIP_ICON 菜单图标
+local GOSSIP_ICON_CHAT            = 0                    -- 对话
+local GOSSIP_ICON_VENDOR          = 1                    -- 货物
+local GOSSIP_ICON_TAXI            = 2                    -- 传送
+local GOSSIP_ICON_TRAINER         = 3                    -- 训练（书）
+local GOSSIP_ICON_INTERACT_1      = 4                    -- 复活
+local GOSSIP_ICON_INTERACT_2      = 5                    -- 设为我的家
+local GOSSIP_ICON_MONEY_BAG       = 6                    -- 钱袋
+local GOSSIP_ICON_TALK            = 7                    -- 申请 说话+黑色点
+local GOSSIP_ICON_TABARD          = 8                    -- 工会（战袍）
+local GOSSIP_ICON_BATTLE          = 9                    -- 加入战场 双剑交叉
+local GOSSIP_ICON_DOT             = 10                   -- 加入战场
+
 --数据库
 local inSQL=[[
 REPLACE INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`)
@@ -37,23 +50,6 @@ local Stone={
         local mins=math.modf((inGameTime-(days*24*3600+hours*3600))/60)
         return days.."天"..hours.."时"..mins.."分"
     end,
-}
-
-local Instances={--副本表
-        {249,0},{249,1},{269,1},{309,0},
-        {409,0},{469,0},
-        {509,0},{531,0},{532,0},{533,0},{533,1},
-        {534,0},{540,1},{542,1},{543,1},{544,0},{545,1},{546,1},{547,1},{548,0},
-        {550,0},{552,1},{553,1},{554,1},{555,1},{556,1},{557,1},{558,1},
-        {560,1},{564,0},{565,0},{568,0},
-        {574,1},{575,1},{576,1},{578,1},
-        {580,0},{585,1},{595,1},{598,1},{599,1},
-        {600,1},{601,1},{602,1},{603,0},{603,1},{604,1},{608,1},
-        {615,0},{615,1},{616,0},{616,1},{619,1},{624,0},{624,1},
-        {631,0},{631,1},{631,2},{631,3},{632,1},
-        {649,0},{649,1},{649,2},{649,3},--十字军的试炼
-        {650,1},{658,1},{668,1},
-        {724,0},{724,1},{724,2},{724,3},
 }
 
 local Menu={
