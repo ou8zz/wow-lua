@@ -10,7 +10,7 @@ local GOSSIP_ICON_VENDOR = 1                    -- 货物
 --数据库
 local inSQL=[[
 REPLACE INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`)
-VALUES (]]..NPCID..[[, 0, 0, 0, 0, 0, ']]..NPCNAME..[[', '', NULL, 0, 83, 83, 0, 35, 81, 1.2, 1.3, 1, 1, 20, 2, 1, 0, 1, 2000, 2000, 1, 1, 1, 0, 2048, 0, 0, 2, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 2, '', 12340);
+VALUES (]]..NPCID..[[, 0, 0, 0, 0, 0, ']]..NPCNAME..[[', '', NULL, 0, 80, 80, 0, 35, 129, 1, 1.3, 1, 1, 20, 1, 0, 0, 1, 2000, 2000, 1, 1, 1, 0, 2048, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, '', 12340);
 
 REPLACE INTO `creature_template_model` (`CreatureID`, `Idx`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild`)
 VALUES (]]..NPCID..[[, 1, 16104, 1, 1, 12340);
@@ -417,18 +417,14 @@ function GOODS.Book(event, player, unit)--显示菜单
 end
 
 function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加货物
-    print(">>Select:", event, player:GetName(), unit:GetName(), sender, intid, code, menu_id)
-    -- 	2	城管	雕文商人	0	161	nil	nil
     player:GossipComplete()    --关闭菜单
     if(intid<0x10)then
         GOODS.AddMenu(player, unit, intid)
     else
         local entry=unit:GetEntry()
-        print(">>GetEntry:", unit:GetName(), entry, intid)
         VendorRemoveAllItems(entry)
         local goods=GOODS[intid] or {}
         for k ,v in pairs(goods)do
-            print(">>AddVendorItem:", entry, v)
             AddVendorItem(entry, v, 0, 0, 0)
         end
         -- player:SendVendorWindow(unit)
@@ -437,6 +433,6 @@ function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加
 end
 
 -- WorldDBExecute(inSQL)  --添加商人
-RegisterCreatureGossipEvent(NPCID, 1, GOODS.Book)
-RegisterCreatureGossipEvent(NPCID, 2, GOODS.Select)
+    RegisterCreatureGossipEvent(NPCID, 1, GOODS.Book)
+    RegisterCreatureGossipEvent(NPCID, 2, GOODS.Select)
 -- WorldDBExecute(unSQL)  -- 删除商人

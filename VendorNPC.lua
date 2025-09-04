@@ -976,7 +976,6 @@ end
 -- math.randomseed(os.time())
 
 function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加货物
-   print(">>Select2:", event, player:GetName(), unit:GetName(), sender, intid, code, menu_id)
     -- local text=Says[math.random(1,#Says)] or nil
     -- if(text)then
     --     unit:SendUnitSay(text,0)
@@ -986,11 +985,9 @@ function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加
         GOODS.AddMenu(player, unit, intid)
     else
         local entry=unit:GetEntry()
-        print(">>GetEntry2:", unit:GetName(), entry, intid)
         VendorRemoveAllItems(entry)
         local goods=GOODS[intid] or {}
         for k ,v in pairs(goods)do
-            print(">>AddVendorItem2:", entry, v)
             AddVendorItem(entry, v, 0, 0, 0)
         end
         -- player:SendVendorWindow(unit)
