@@ -417,6 +417,7 @@ function GOODS.Book(event, player, unit)--显示菜单
 end
 
 function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加货物
+    print(">>Select:", event, player:GetName(), unit:GetName(), sender, intid, code, menu_id)
     player:GossipComplete()    --关闭菜单
     if(intid<0x10)then
         GOODS.AddMenu(player, unit, intid)
