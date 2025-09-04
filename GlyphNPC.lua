@@ -418,14 +418,17 @@ end
 
 function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加货物
     print(">>Select:", event, player:GetName(), unit:GetName(), sender, intid, code, menu_id)
+    -- 	2	城管	雕文商人	0	161	nil	nil
     player:GossipComplete()    --关闭菜单
     if(intid<0x10)then
         GOODS.AddMenu(player, unit, intid)
     else
         local entry=unit:GetEntry()
-         VendorRemoveAllItems(entry)
+        print(">>GetEntry:", unit:GetName(), entry, intid)
+        VendorRemoveAllItems(entry)
         local goods=GOODS[intid] or {}
         for k ,v in pairs(goods)do
+            print(">>AddVendorItem:", entry, v)
             AddVendorItem(entry, v, 0, 0, 0)
         end
         -- player:SendVendorWindow(unit)
