@@ -1,6 +1,6 @@
 print(">>Script: More Vendor NPC.")
 
-local NPCID   = 190099
+local NPCID   = 80012
 local NPCNAME = "综合商人"
 
 local DW=1
@@ -11,7 +11,13 @@ local GOSSIP_ICON_VENDOR          = 1                    -- 货物
 
 --数据库
 local inSQL=[[
-REPLACE INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction_A`, `faction_H`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `rank`, `mindmg`, `maxdmg`, `dmgschool`, `attackpower`, `dmg_multiplier`, `baseattacktime`, `rangeattacktime`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `minrangedmg`, `maxrangedmg`, `rangedattackpower`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `resistance1`, `resistance2`, `resistance3`, `resistance4`, `resistance5`, `resistance6`, `spell1`, `spell2`, `spell3`, `spell4`, `spell5`, `spell6`, `spell7`, `spell8`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `InhabitType`, `HoverHeight`, `Health_mod`, `Mana_mod`, `Armor_mod`, `RacialLeader`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`, `WDBVerified`) VALUES (]]..NPCID..[[, 0, 0, 0, 0, 0, 16104, 0, 0, 0, ']]..NPCNAME..[[', NULL, NULL, 0, 80, 80, 2, 35, 35, 129, 1, 1.14286, 1, 0, 500, 500, 0, 350, 1, 2000, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, '', 12340);
+REPLACE INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`)
+VALUES (]]..NPCID..[[, 0, 0, 0, 0, 0, ']]..NPCNAME..[[', '', 'Speak', 0, 80, 80, 0, 35, 1, 1, 1.3, 1, 1, 20, 1, 0, 0, 1, 2000, 2000, 1, 1, 1, 0, 2048, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, '', 12340);
+]]
+
+local inSQL2=[[
+REPLACE INTO `creature_template_model` (`CreatureID`, `Idx`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild`)
+VALUES (]]..NPCID..[[, 1, 16104, 1, 1, 12340);
 ]]
 
 local unSQL="DELETE FROM `creature_template` WHERE `entry`="..NPCID..";"
@@ -995,7 +1001,8 @@ function GOODS.Select(event, player, unit, sender, intid, code, menu_id)--添加
     end
 end
 
---WorldDBExecute(inSQL)--添加商人
-    RegisterCreatureGossipEvent(NPCID, 1, GOODS.Book)
-    RegisterCreatureGossipEvent(NPCID, 2, GOODS.Select)
+WorldDBExecute(inSQL)--添加NPC
+WorldDBExecute(inSQL2)--添加NPC
+RegisterCreatureGossipEvent(NPCID, 1, GOODS.Book)
+RegisterCreatureGossipEvent(NPCID, 2, GOODS.Select)
 --WorldDBExecute(unSQL)删除商人
