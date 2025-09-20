@@ -4,6 +4,7 @@ print(">>Script: NPC2.")
 --菜单所有者 --默认炉石
 local itemEntry = 6948
 local NPCID   = 80013
+local NPCNAME = "NPC2"
 --阵营
 local TEAM_ALLIANCE=0
 local TEAM_HORDE=1
