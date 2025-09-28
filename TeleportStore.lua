@@ -262,11 +262,15 @@ local Stone={
 local Menu={
     [MMENU]={--主菜单
         {MENU, "地图传送",         TPMENU,            GOSSIP_ICON_BATTLE},
-        {MENU, "其他功能",        MMENU+0x10,        GOSSIP_ICON_INTERACT_1},
+        -- {MENU, "其他功能",        MMENU+0x10,        GOSSIP_ICON_INTERACT_1},
         --{FUNC, "召唤超级商人",     ST.SummonGNPC,    GOSSIP_ICON_MONEY_BAG},
         --{FUNC, "附魔大师NPC",    ST.SummonENPC,    GOSSIP_ICON_TABARD},
         {MENU, "职业技能训练师",MMENU+0x20,        GOSSIP_ICON_BATTLE},
         {MENU, "专业技能训练师",MMENU+0x30,        GOSSIP_ICON_BATTLE},
+        {FUNC, "解除虚弱",         Stone.WeakOut,        GOSSIP_ICON_INTERACT_1, false,"是否解除虚弱，并回复生命 ?"},
+        {FUNC, "重置天赋"    ,    Stone.ResetTalents,    GOSSIP_ICON_TRAINER,    false,"确认重置天赋 ?"},
+        {FUNC, "武器熟练度满值",    Stone.WSkillsToMax,    GOSSIP_ICON_TRAINER,    false,"确认把武器熟练度加满 ?"},
+        {FUNC, "强制脱离战斗",     Stone.OutCombat,GOSSIP_ICON_CHAT},
     },
     [MMENU+0x10]={--其他功能
         --{FUNC, "解除虚弱",         Stone.WeakOut,        GOSSIP_ICON_INTERACT_1, false,"是否解除虚弱，并回复生命 ?"},
@@ -285,11 +289,11 @@ local Menu={
         --{FUNC, "|cFF800000不保存角色|r",Stone.LogoutNosave,GOSSIP_ICON_INTERACT_1,false,"|cFFFF0000不保存角色，并返回选择角色界面 ?|r"},
         {FUNC, "强制脱离战斗",     Stone.OutCombat,GOSSIP_ICON_CHAT},
         {FUNC, "修理所有装备",    Stone.RepairAll,    GOSSIP_ICON_VENDOR,        false,"需要花费金币修理装备 ?"},
-        {FUNC, "修改名字",        Stone.ResetName,    GOSSIP_ICON_CHAT,        false,"是否更改名字？\n|cFFFFFF00需要重新登录才能修改。|r"},
-        {FUNC, "修改外貌",        Stone.ResetFace,    GOSSIP_ICON_CHAT,        false,"是否更改外貌？\n|cFFFFFF00需要重新登录才能修改。|r"},
-        {FUNC, "修改种族",        Stone.ResetRace,    GOSSIP_ICON_CHAT,        false,"是否更改种族？\n|cFFFFFF00需要重新登录才能修改。|r"},
-        {FUNC, "修改阵营",        Stone.ResetFaction,    GOSSIP_ICON_CHAT,        false,"是否更改阵营？\n|cFFFFFF00需要重新登录才能修改。|r"},
-        {FUNC, "遗忘所有法术",    Stone.ResetSpell,    GOSSIP_ICON_CHAT,        false,"是否遗忘所有法术？\n|cFFFFFF00需要重新登录才能生效。|r"},
+        -- {FUNC, "修改名字",        Stone.ResetName,    GOSSIP_ICON_CHAT,        false,"是否更改名字？\n|cFFFFFF00需要重新登录才能修改。|r"},
+        -- {FUNC, "修改外貌",        Stone.ResetFace,    GOSSIP_ICON_CHAT,        false,"是否更改外貌？\n|cFFFFFF00需要重新登录才能修改。|r"},
+        -- {FUNC, "修改种族",        Stone.ResetRace,    GOSSIP_ICON_CHAT,        false,"是否更改种族？\n|cFFFFFF00需要重新登录才能修改。|r"},
+        -- {FUNC, "修改阵营",        Stone.ResetFaction,    GOSSIP_ICON_CHAT,        false,"是否更改阵营？\n|cFFFFFF00需要重新登录才能修改。|r"},
+        -- {FUNC, "遗忘所有法术",    Stone.ResetSpell,    GOSSIP_ICON_CHAT,        false,"是否遗忘所有法术？\n|cFFFFFF00需要重新登录才能生效。|r"},
     },
     [TPMENU]={--传送菜单
         {MENU, "主要城市",            TPMENU+0x10,GOSSIP_ICON_BATTLE},

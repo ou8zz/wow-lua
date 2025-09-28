@@ -25,6 +25,7 @@ local unSQL="DELETE FROM `creature_template` WHERE `entry`="..NPCID..";"
 local GOODS={--货物id号
     [0]={--菜单
         {"职业雕文",1},
+        {"传家宝装备",OT+0x90},
         {"钥匙1",OT+0x10},
         {"钥匙2",OT+0x20},
         {"钥匙3",OT+0x30},
@@ -34,7 +35,6 @@ local GOODS={--货物id号
         {"材料物品2",OT+0x70},
         {"材料物品3",OT+0x80},
         {"材料物品4",OT+0xa0},
-        {"传家宝装备",OT+0x90},
     },
     [1]={--雕文
         {"战士雕文",DW+0xa0},
