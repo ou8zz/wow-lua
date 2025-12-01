@@ -21,4 +21,4 @@ local function OnItemUse(event, player, item, target)
     return true
 end
 
-RegisterItemEvent(52019, 2, OnItemUse)
+RegisterItemEvent(50459, 2, OnItemUse)
