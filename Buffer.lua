@@ -3,7 +3,7 @@ print(">>Script: Buffer.")
 local BuffSpells = {48162, 43223, 48469, 48074, 48170, 42995, 53307}
 
 local function OnItemUse(event, player, item, target)
-    if item:GetEntry() == 52019 then -- 使用原始脚本的物品ID
+    if item:GetEntry() == 50459 then -- 使用原始脚本的物品ID
         -- 移除复活病
         if player:HasAura(15007) then
             player:RemoveAura(15007)
