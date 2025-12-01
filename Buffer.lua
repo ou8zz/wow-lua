@@ -1,3 +1,4 @@
+print(">>Script: Buffer.")
 -- 简化版Buffer物品脚本 (仅物品功能)
 local BFEnableModule = true
 local BuffByLevel = true
@@ -72,9 +73,6 @@ local function OnItemUse(event, player, item, target)
     return true -- 不消耗物品
 end
 
--- 注册物品事件 (替换52019为您实际使用的物品ID)
-RegisterItemEvent(52019, 2, OnItemUse) -- 52019是原始脚本中的物品ID
-
 -- 辅助函数(如果Eluna不提供这些函数，则使用简化版本)
 function GetSpellFirstRank(spellId)
     -- 简化实现：返回原ID
@@ -95,3 +93,6 @@ function GetNumSpellRanks(spellId)
     -- 简化实现：返回固定值
     return 1
 end
+
+-- 注册物品事件 (替换52019为您实际使用的物品ID)
+RegisterItemEvent(52019, 2, OnItemUse) -- 52019是原始脚本中的物品ID
