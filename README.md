@@ -7,3 +7,7 @@
 * TpNPC 传送 80011
 * VendorNPC 综合物品商人 80012
 * NPC2 传送等功能 80013（待完善）
+* Buffer 小宝的丝带技能
+```sql
+update item_template set flags = 67141696, spelltrigger_1 = 0, scriptName = 'buff_item', description = '比心，爱你，点击获取多个增益' where entry = 52019;
+```
