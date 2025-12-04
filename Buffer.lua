@@ -15,36 +15,10 @@ local function OnItemUse(event, player, item, target)
             player:SendBroadcastMessage("The aura of death has been lifted from you " .. player:GetName() .. ".")
         end
 
-        local group = player:GetGroup()
-        if group then
-            print(">>> Player is in a group")  -- 添加调试信息
-            -- 给整个队伍施加Buff
-            -- 使用更安全的方式遍历组成员
-            local members = group:GetMembers()
-            if members then
-                for i = 1, #members do
-                    local member = members[i]
-                    -- 检查member是否有效玩家对象
-                    if member and type(member) == "table" and member.GetName and member:IsInWorld() then
-                        for _, spellId in ipairs(BuffSpells) do
-                            player:CastSpell(member, spellId, true)
-                        end
-                    elseif type(member) == "userdata" or type(member) == "string" then
-                        -- 如果member是GUID，尝试转换为玩家对象
-                        -- 这里需要根据实际API调整
-                        print("Member type:", type(member))
-                    end
-                end
-            end
-            player:SendBroadcastMessage("Your group has been buffed!")
-        else
-            print(">>> Player is not in a group")  -- 添加调试信息
-            -- 如果没有队伍，则给自己施加Buff
-            for _, spellId in ipairs(BuffSpells) do
-                player:CastSpell(player, spellId, true)
-            end
-            player:SendBroadcastMessage("You have been buffed!")
+        for _, spellId in ipairs(BuffSpells) do
+            player:CastSpell(player, spellId, true)
         end
+        player:SendBroadcastMessage("You have been buffed!")
 
         return false -- 消耗物品
     end
