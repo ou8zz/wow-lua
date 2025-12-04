@@ -1,14 +1,10 @@
 print(">>Script: Buffer.")
 -- Buff法术列表 (48162;43223;48469;48074;48170;42995;53307;)
 local BuffSpells = {48162, 43223, 48469, 48074, 48170, 42995, 53307}
+local itemId=52019
 
 local function OnItemUse(event, player, item, target)
-    print(">>> Item use event triggered")  -- 调试信息
-    print(">>> Item used:", item:GetEntry(), "by player:", player:GetName())  -- 添加调试信息
-    
-    if item:GetEntry() == 52019 then
-        print(">>> Processing item 52019")  -- 修正注释
-        
+    if item:GetEntry() == itemId then
         -- 移除复活病
         if player:HasAura(15007) then
             player:RemoveAura(15007)
@@ -25,4 +21,4 @@ local function OnItemUse(event, player, item, target)
     return true
 end
 
-RegisterItemEvent(52019, 2, OnItemUse)
+RegisterItemEvent(itemId, 2, OnItemUse)
