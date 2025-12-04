@@ -11,12 +11,6 @@ local function OnItemUse(event, player, item, target)
     if item:GetEntry() == 50459 then
         print(">>> Processing item 50459")  -- 添加调试信息
         
-        -- 移除复活病
-        if player:HasAura(15007) then
-            player:RemoveAura(15007)
-            player:SendBroadcastMessage("The aura of death has been lifted from you " .. player:GetName() .. ".")
-        end
-
         local group = player:GetGroup()
         if group then
             print(">>> Player is in a group")  -- 添加调试信息
@@ -43,14 +37,5 @@ local function OnItemUse(event, player, item, target)
     end
     return true
 end
-
-local function TestCommand(event, player, command, chatHandler)
-    if command == "testbuff" then
-        player:SendBroadcastMessage("Test command works!")
-        return false
-    end
-end
-
-RegisterPlayerEvent(42, TestCommand) -- 注册聊天命令事件测试
 
 RegisterItemEvent(52019, 2, OnItemUse)
