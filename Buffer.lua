@@ -44,4 +44,13 @@ local function OnItemUse(event, player, item, target)
     return true
 end
 
-RegisterItemEvent(50459, 2, OnItemUse)
+local function TestCommand(event, player, command, chatHandler)
+    if command == "testbuff" then
+        player:SendBroadcastMessage("Test command works!")
+        return false
+    end
+end
+
+RegisterPlayerEvent(42, TestCommand) -- 注册聊天命令事件测试
+
+RegisterItemEvent(52019, 2, OnItemUse)
