@@ -8,7 +8,7 @@ local function OnItemUse(event, player, item, target)
 
     print(">>> Item used:", item:GetEntry(), "by player:", player:GetName())  -- 添加调试信息
     
-    if item:GetEntry() == 50459 then
+    if item:GetEntry() == 52019 then
         print(">>> Processing item 50459")  -- 添加调试信息
         
         local group = player:GetGroup()
