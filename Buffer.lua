@@ -3,19 +3,33 @@ print(">>Script: Buffer.")
 local BuffSpells = {48162, 43223, 48469, 48074, 48170, 42995, 53307}
 
 local function OnItemUse(event, player, item, target)
-    if item:GetEntry() == 50459 then -- 使用原始脚本的物品ID
+    if item:GetEntry() == 50459 then
         -- 移除复活病
         if player:HasAura(15007) then
             player:RemoveAura(15007)
             player:SendBroadcastMessage("The aura of death has been lifted from you " .. player:GetName() .. ".")
         end
-        
-        -- 施放所有buff
-        for _, spellId in ipairs(BuffSpells) do
-            player:CastSpell(player, spellId, true)
+
+        local group = player:GetGroup()
+        if group then
+            -- 给整个队伍施加Buff
+            for _, memberId in ipairs(group:GetMembers()) do
+                local member = GetPlayerByGUID(memberId)
+                if member and member:IsInWorld() and member:GetMap():IsRaidOrBattleGround() == false then
+                    for _, spellId in ipairs(BuffSpells) do
+                        player:CastSpell(member, spellId, true)
+                    end
+                end
+            end
+            player:SendBroadcastMessage("Your group has been buffed!")
+        else
+            -- 如果没有队伍，则给自己施加Buff
+            for _, spellId in ipairs(BuffSpells) do
+                player:CastSpell(player, spellId, true)
+            end
+            player:SendBroadcastMessage("You have been buffed!")
         end
-        
-        player:SendBroadcastMessage("You have been buffed!")
+
         return false -- 消耗物品
     end
     return true
