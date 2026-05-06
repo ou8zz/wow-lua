@@ -1,7 +1,7 @@
 print(">>Script: Buffer.")
 -- Buff法术列表 (48162;43223;48469;48074;48170;42995;53307;)
 local BuffSpells = {48162, 43223, 48469, 48074, 48170, 42995, 53307}
-local itemId=52019
+local itemId=52019 -- 绑定到物品ID
 
 local function OnItemUse(event, player, item, target)
     if item:GetEntry() == itemId then
